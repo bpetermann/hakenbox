@@ -2,15 +2,11 @@
   "name": "react-haken-project",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "packages/react-haken",
-    "packages/playground"
-  ],
   "scripts": {
-    "build": "npm run build -w react-haken",
-    "test": "npm run test -w react-haken",
-    "test:watch": "npm run test:watch -w react-haken",
-    "dev": "npm run dev -w playground",
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter playground dev",
+    "test": "pnpm --filter react-haken test",
+    "test:watch": "pnpm --filter react-haken test:watch",
     "copy-readme": "cp ./README.md ./packages/react-haken/README.md"
   }
 }
