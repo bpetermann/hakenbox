@@ -1,12 +1,12 @@
 {
-  "name": "react-haken-project",
+  "name": "hakenbox-project",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "pnpm -r build",
     "dev": "pnpm --filter playground dev",
-    "test": "pnpm --filter react-haken test",
-    "test:watch": "pnpm --filter react-haken test:watch",
-    "copy-readme": "cp ./README.md ./packages/react-haken/README.md"
+    "test": "pnpm --filter hakenbox test",
+    "test:watch": "pnpm --filter hakenbox test:watch",
+    "copy-readme": "cp ./README.md ./packages/hakenbox/README.md"
   }
 }
