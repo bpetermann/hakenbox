@@ -7,6 +7,10 @@
     "dev": "pnpm --filter playground dev",
     "test": "pnpm --filter hakenbox test",
     "test:watch": "pnpm --filter hakenbox test:watch",
-    "copy-readme": "cp ./README.md ./packages/hakenbox/README.md"
+    "copy-readme": "cp ./README.md ./packages/hakenbox/README.md",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
   }
 }
