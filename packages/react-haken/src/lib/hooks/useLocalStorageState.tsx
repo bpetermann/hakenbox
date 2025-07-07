@@ -5,6 +5,8 @@ type UseStorageStateOptions<T> = {
   deserialize?: (value: string) => T;
 };
 
+const isBrowser = typeof window !== 'undefined';
+
 export const useLocalStorageState = <TValue,>(
   key: string,
   defaultValue: TValue,
@@ -14,6 +16,8 @@ export const useLocalStorageState = <TValue,>(
   const deserialize = options?.deserialize ?? JSON.parse;
 
   const [state, setState] = useState<TValue>(() => {
+    if (!isBrowser) return defaultValue;
+
     const stored = localStorage.getItem(key);
 
     if (stored !== null) {
@@ -28,6 +32,8 @@ export const useLocalStorageState = <TValue,>(
   });
 
   useEffect(() => {
+    if (!isBrowser) return;
+
     try {
       localStorage.setItem(key, serialize(state));
     } catch {
