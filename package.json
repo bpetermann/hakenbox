@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "pnpm -r build",
-    "dev": "pnpm --filter playground dev",
+    "dev:vite": "pnpm --filter playground-vite dev",
+    "dev:next": "pnpm --filter playground-next dev",
     "test": "pnpm --filter hakenbox test",
     "test:watch": "pnpm --filter hakenbox test:watch",
     "copy-readme": "cp ./README.md ./packages/hakenbox/README.md",
