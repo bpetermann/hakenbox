@@ -1,5 +1,4 @@
 import { useLocalStorageState } from 'hakenbox';
-import './App.css';
 
 function Component() {
   const [count, setCount] = useLocalStorageState<number>('key', 0);

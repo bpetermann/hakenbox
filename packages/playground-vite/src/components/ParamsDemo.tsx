@@ -1,5 +1,4 @@
 import { useParams } from 'hakenbox';
-import './App.css';
 
 function Component() {
   const [params, setParams] = useParams<{ name: string }>({ name: '' });
