@@ -1,5 +1,5 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vitest } from 'vitest';
 import { useLocalStorageState } from '../../lib/hooks/useLocalStorageState';
 import { renderHookComponent } from '../utils/renderHookComponent';
 
@@ -57,5 +57,18 @@ describe('useLocalStorageState', () => {
 
     expect(screen.getByText('1')).toBeInTheDocument();
     expect(localStorage.getItem(storageKey)).toBe('1');
+  });
+
+  it('does NOT read localStorage during first render (only in useEffect)', () => {
+    const getItemSpy = vitest.spyOn(window.localStorage.__proto__, 'getItem');
+
+    renderHookComponent(
+      () => useLocalStorageState<number>(storageKey, 0),
+      ([value]) => <div>{value}</div>
+    );
+
+    expect(getItemSpy).toHaveBeenCalledWith(storageKey);
+
+    getItemSpy.mockRestore();
   });
 });
