@@ -35,6 +35,15 @@ const convertParams = <T extends Record<string, unknown>>(
   return newSearchParams;
 };
 
+/**
+ * Custom hook to manage URL search parameters as state.
+ * @template T The shape of the parameters object.
+ * @param {T} [initialState] Optional initial state for parameters.
+ * @returns
+ * - `params`: The current parameters object.
+ * - `setParams`: Function to update parameters.
+ * - `resetParams`: Function to reset parameters to their initial state.
+ */
 export function useParams<T extends Record<string, unknown>>(
   initialState?: T
 ): [
