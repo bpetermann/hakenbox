@@ -1,11 +1,10 @@
-import { useLocalStorageState } from 'hakenbox';
 import './App.css';
 import reactLogo from './assets/react.svg';
+import ParamsDemo from './components/ParamsDemo';
+import StorageStateDemo from './components/StorageStateDemo';
 import viteLogo from '/vite.svg';
 
 function App() {
-  const [count, setCount] = useLocalStorageState<number>('key', 0);
-
   return (
     <>
       <div>
@@ -18,13 +17,12 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <StorageStateDemo />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+      <ParamsDemo />
       <p className='read-the-docs'>
         Click on the Vite and React logos to learn more
       </p>
