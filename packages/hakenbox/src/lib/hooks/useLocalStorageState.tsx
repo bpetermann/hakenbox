@@ -7,6 +7,15 @@ type UseStorageStateOptions<T> = {
 
 const isBrowser = typeof window !== 'undefined';
 
+/**
+ * Persists state to localStorage and restores it on initial load.
+ * Safe to use in environments that support server-side rendering.
+ *
+ * @param key - The localStorage key to use.
+ * @param defaultValue - The initial value if nothing is stored.
+ * @param options - Optional custom serialization and deserialization.
+ * @returns A stateful value, and a function to update it.
+ */
 export const useLocalStorageState = <TValue,>(
   key: string,
   defaultValue: TValue,
