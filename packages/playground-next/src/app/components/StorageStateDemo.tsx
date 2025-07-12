@@ -1,7 +1,8 @@
 'use client';
+
 import { useLocalStorageState } from 'hakenbox';
 
-function Component() {
+function StorageStateDemo() {
   const [count, setCount] = useLocalStorageState<number>('key', 0);
 
   return (
@@ -14,4 +15,4 @@ function Component() {
   );
 }
 
-export default Component;
+export default StorageStateDemo;
