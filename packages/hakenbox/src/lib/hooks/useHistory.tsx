@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 type SetStateWithHistory<T> = {
   (value: T, save?: boolean): void;
@@ -11,8 +11,18 @@ type UseHistoryOptions = {
 };
 
 /**
- * Custom hook that acts like useState, but optionally saves state history.
+ * Custom hook that manages state with optional history tracking.
+ *
+ * Supports manual or automatic saving of previous state values.
+ *
+ * @param initial - Initial state value.
+ * @param options - Optional settings:
+ *   - `autoSave`: Automatically add every new value to history (default: false).
+ *   - `limit`: Maximum number of entries to retain in history.
+ *
+ * @returns A stateful value, a function to update it and the history of updates.
  */
+
 export const useHistory = <T,>(
   initial: T,
   options?: UseHistoryOptions
