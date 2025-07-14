@@ -1,5 +1,6 @@
 import './App.css';
 import reactLogo from './assets/react.svg';
+import HistoryDemo from './components/HistoryDemo';
 import ParamsDemo from './components/ParamsDemo';
 import StorageStateDemo from './components/StorageStateDemo';
 import viteLogo from '/vite.svg';
@@ -23,6 +24,7 @@ function App() {
         </p>
       </div>
       <ParamsDemo />
+      <HistoryDemo />
       <p className='read-the-docs'>
         Click on the Vite and React logos to learn more
       </p>
