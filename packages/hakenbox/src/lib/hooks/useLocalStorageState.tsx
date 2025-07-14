@@ -24,7 +24,7 @@ export const useLocalStorageState = <TValue,>(
   const serialize = options?.serialize ?? JSON.stringify;
   const deserialize = options?.deserialize ?? JSON.parse;
 
-  const [state, setState] = useState<TValue>(defaultValue);
+  const [value, set] = useState<TValue>(defaultValue);
 
   useEffect(() => {
     if (!isBrowser) return;
@@ -33,7 +33,7 @@ export const useLocalStorageState = <TValue,>(
 
     if (stored !== null) {
       try {
-        setState(deserialize(stored));
+        set(deserialize(stored));
       } catch {
         console.warn(`Failed to deserialize localStorage key "${key}".`);
       }
@@ -41,15 +41,15 @@ export const useLocalStorageState = <TValue,>(
   }, [deserialize, key]);
 
   useEffect(() => {
-    if (!isBrowser || JSON.stringify(defaultValue) === JSON.stringify(state))
+    if (!isBrowser || JSON.stringify(defaultValue) === JSON.stringify(value))
       return;
 
     try {
-      localStorage.setItem(key, serialize(state));
+      localStorage.setItem(key, serialize(value));
     } catch {
       console.warn(`Failed to serialize localStorage key "${key}".`);
     }
-  }, [key, state, serialize, defaultValue]);
+  }, [key, value, serialize, defaultValue]);
 
-  return [state, setState];
+  return [value, set];
 };

@@ -26,7 +26,7 @@ export const useLocalStorageCSR = <TValue,>(
   const serialize = options?.serialize ?? JSON.stringify;
   const deserialize = options?.deserialize ?? JSON.parse;
 
-  const [state, setState] = useState<TValue>(() => {
+  const [value, set] = useState<TValue>(() => {
     if (!isBrowser) return defaultValue;
 
     const stored = localStorage.getItem(key);
@@ -46,11 +46,11 @@ export const useLocalStorageCSR = <TValue,>(
     if (!isBrowser) return;
 
     try {
-      localStorage.setItem(key, serialize(state));
+      localStorage.setItem(key, serialize(value));
     } catch {
       console.warn(`Failed to serialize localStorage key "${key}"`);
     }
-  }, [key, state, serialize]);
+  }, [key, value, serialize]);
 
-  return [state, setState];
+  return [value, set];
 };
