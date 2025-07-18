@@ -37,20 +37,13 @@ const convertParams = <T extends Record<string, unknown>>(
 
 /**
  * Custom hook to manage URL search parameters as state.
- * @template T The shape of the parameters object.
- * @param {T} [initialState] Optional initial state for parameters.
+ * @param initialState - Initial state value.
  * @returns
  * - `params`: The current parameters object.
  * - `setParams`: Function to update parameters.
  * - `resetParams`: Function to reset parameters to their initial state.
  */
-export function useParams<T extends Record<string, unknown>>(
-  initialState?: T
-): [
-  params: T,
-  setParams: (setFn: (prev: T) => T, options?: { replace?: boolean }) => void,
-  resetParams: () => void
-] {
+export function useParams<T extends Record<string, unknown>>(initialState?: T) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const stableInitialState = useMemo(() => initialState || ({} as T), []);
 
@@ -109,5 +102,5 @@ export function useParams<T extends Record<string, unknown>>(
     window.history.replaceState({}, '', `?${resetSearchParams.toString()}`);
   }, [initialState]);
 
-  return [searchParams, setSearchParams, resetParams];
+  return [searchParams, setSearchParams, resetParams] as const;
 }

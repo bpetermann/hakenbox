@@ -23,23 +23,20 @@ type UseHistoryOptions = {
  * @returns A stateful value, a function to update it and the history of updates.
  */
 
-export const useHistory = <T,>(
-  initial: T,
-  options?: UseHistoryOptions
-): [T, SetStateWithHistory<T>, T[]] => {
-  const [value, setValue] = useState<T>(initial);
+export const useHistory = <T,>(initial: T, options?: UseHistoryOptions) => {
+  const [value, set] = useState<T>(initial);
   const [history, setHistory] = useState<T[]>([initial]);
 
   const { autoSave = false, limit } = options || {};
 
-  const set = useCallback<SetStateWithHistory<T>>(
+  const setValue = useCallback<SetStateWithHistory<T>>(
     (arg, save = false) => {
       const newValue =
         typeof arg === 'function' ? (arg as (prev: T) => T)(value) : arg;
 
       const toSave = save || autoSave;
 
-      setValue(newValue);
+      set(newValue);
       if (toSave) {
         setHistory((prev) => {
           const next = [...prev, newValue];
@@ -50,5 +47,5 @@ export const useHistory = <T,>(
     [value, autoSave, limit]
   );
 
-  return [value, set, history];
+  return [value, setValue, history] as const;
 };

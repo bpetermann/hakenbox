@@ -22,11 +22,11 @@ export const useLocalStorageCSR = <TValue,>(
   key: string,
   defaultValue: TValue,
   options?: UseStorageStateOptions<TValue>
-): [TValue, React.Dispatch<React.SetStateAction<TValue>>] => {
+) => {
   const serialize = options?.serialize ?? JSON.stringify;
   const deserialize = options?.deserialize ?? JSON.parse;
 
-  const [value, set] = useState<TValue>(() => {
+  const [value, setValue] = useState<TValue>(() => {
     if (!isBrowser) return defaultValue;
 
     const stored = localStorage.getItem(key);
@@ -52,5 +52,5 @@ export const useLocalStorageCSR = <TValue,>(
     }
   }, [key, value, serialize]);
 
-  return [value, set];
+  return [value, setValue] as const;
 };

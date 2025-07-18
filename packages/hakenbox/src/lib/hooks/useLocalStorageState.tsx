@@ -20,11 +20,11 @@ export const useLocalStorageState = <TValue,>(
   key: string,
   defaultValue: TValue,
   options?: UseStorageStateOptions<TValue>
-): [TValue, React.Dispatch<React.SetStateAction<TValue>>] => {
+) => {
   const serialize = options?.serialize ?? JSON.stringify;
   const deserialize = options?.deserialize ?? JSON.parse;
 
-  const [value, set] = useState<TValue>(defaultValue);
+  const [value, setValue] = useState<TValue>(defaultValue);
 
   useEffect(() => {
     if (!isBrowser) return;
@@ -33,7 +33,7 @@ export const useLocalStorageState = <TValue,>(
 
     if (stored !== null) {
       try {
-        set(deserialize(stored));
+        setValue(deserialize(stored));
       } catch {
         console.warn(`Failed to deserialize localStorage key "${key}".`);
       }
@@ -51,5 +51,5 @@ export const useLocalStorageState = <TValue,>(
     }
   }, [key, value, serialize, defaultValue]);
 
-  return [value, set];
+  return [value, setValue] as const;
 };
