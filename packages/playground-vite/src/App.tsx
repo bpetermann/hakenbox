@@ -1,5 +1,6 @@
 import './App.css';
 import reactLogo from './assets/react.svg';
+import DerivedDemo from './components/DerivedDemo';
 import HistoryDemo from './components/HistoryDemo';
 import ParamsDemo from './components/ParamsDemo';
 import StorageStateDemo from './components/StorageStateDemo';
@@ -19,12 +20,15 @@ function App() {
       <h1>Vite + React</h1>
       <div className='card'>
         <StorageStateDemo />
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      </div>{' '}
+      <div className='card'>
+        <ParamsDemo />{' '}
       </div>
-      <ParamsDemo />
-      <HistoryDemo />
+      <HistoryDemo /> <div className='card'></div>
+      <div className='card'>
+        {' '}
+        <DerivedDemo />
+      </div>
       <p className='read-the-docs'>
         Click on the Vite and React logos to learn more
       </p>
