@@ -1,9 +1,11 @@
 import './App.css';
 import reactLogo from './assets/react.svg';
+import ControlDemo from './components/ControlDemo';
 import DerivedDemo from './components/DerivedDemo';
 import HistoryDemo from './components/HistoryDemo';
 import ParamsDemo from './components/ParamsDemo';
 import StorageStateDemo from './components/StorageStateDemo';
+
 import viteLogo from '/vite.svg';
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
       <div className='card'>
         {' '}
         <DerivedDemo />
+      </div>
+      <div className='card'>
+        {' '}
+        <ControlDemo />
       </div>
       <p className='read-the-docs'>
         Click on the Vite and React logos to learn more
