@@ -1,6 +1,7 @@
 import './App.css';
 import reactLogo from './assets/react.svg';
 import ControlDemo from './components/ControlDemo';
+import DebounceDemo from './components/DebounceDemo';
 import DerivedDemo from './components/DerivedDemo';
 import HistoryDemo from './components/HistoryDemo';
 import ParamsDemo from './components/ParamsDemo';
@@ -22,18 +23,19 @@ function App() {
       <h1>Vite + React</h1>
       <div className='card'>
         <StorageStateDemo />
-      </div>{' '}
+      </div>
       <div className='card'>
-        <ParamsDemo />{' '}
+        <ParamsDemo />
       </div>
       <HistoryDemo /> <div className='card'></div>
       <div className='card'>
-        {' '}
         <DerivedDemo />
       </div>
       <div className='card'>
-        {' '}
         <ControlDemo />
+      </div>
+      <div className='card'>
+        <DebounceDemo />
       </div>
       <p className='read-the-docs'>
         Click on the Vite and React logos to learn more
