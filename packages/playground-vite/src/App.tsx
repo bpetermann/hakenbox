@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg';
 import ControlDemo from './components/ControlDemo';
 import DebounceDemo from './components/DebounceDemo';
 import DerivedDemo from './components/DerivedDemo';
+import FocusTrapDemo from './components/FocusTrapDemo';
 import HistoryDemo from './components/HistoryDemo';
 import ParamsDemo from './components/ParamsDemo';
 import StorageStateDemo from './components/StorageStateDemo';
@@ -36,6 +37,9 @@ function App() {
       </div>
       <div className='card'>
         <DebounceDemo />
+      </div>
+      <div className='card'>
+        <FocusTrapDemo />
       </div>
       <p className='read-the-docs'>
         Click on the Vite and React logos to learn more
