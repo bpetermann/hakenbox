@@ -1,3 +1,4 @@
+export { useClickAway } from './lib/hooks/useClickAway';
 export { useControlState } from './lib/hooks/useControlState';
 export { useDebounce } from './lib/hooks/useDebounce';
 export { useDerivedState } from './lib/hooks/useDerivedState';

@@ -38,7 +38,7 @@ describe('useClickAway', () => {
       )
     );
 
-    const inside = screen.getByRole('span');
+    const inside = screen.getByText('Inside');
     fireEvent.mouseDown(inside);
 
     expect(callback).not.toHaveBeenCalled();
