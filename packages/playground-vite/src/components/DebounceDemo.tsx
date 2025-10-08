@@ -13,6 +13,7 @@ function SearchBox() {
     <>
       <label>
         Search:
+        <br />
         <input
           type='text'
           value={query}

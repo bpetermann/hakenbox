@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import './App.css';
+import ClickAwayDemo from './components/ClickAwayDemo';
 import ControlDemo from './components/ControlDemo';
 import DebounceDemo from './components/DebounceDemo';
 import DerivedDemo from './components/DerivedDemo';
 import FocusTrapDemo from './components/FocusTrapDemo';
 import ParamsDemo from './components/ParamsDemo';
 import StorageStateDemo from './components/StorageStateDemo';
+
 const options = {
   StorageStateDemo: {
     hook: <StorageStateDemo />,
@@ -36,6 +38,11 @@ const options = {
     description:
       'Demonstrates trapping focus inside a modal or popover component.',
   },
+
+  ClickAwayDemo: {
+    hook: <ClickAwayDemo />,
+    description: 'Demonstrates closing a panel by clicking outside of it',
+  },
 };
 
 const optionLabels: Record<keyof typeof options, string> = {
@@ -45,6 +52,7 @@ const optionLabels: Record<keyof typeof options, string> = {
   ControlDemo: 'Control',
   DebounceDemo: 'Debounce',
   FocusTrapDemo: 'Focus Trap',
+  ClickAwayDemo: 'Click Away',
 };
 
 function App() {
