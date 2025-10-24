@@ -29,7 +29,7 @@ export function useFocusTrap<T extends HTMLElement>(
     const refElement = ref.current;
 
     const focusableElements =
-      refElement.querySelectorAll<T>(FOCUSABLE_ELEMENTS);
+      refElement.querySelectorAll<HTMLElement>(FOCUSABLE_ELEMENTS);
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
