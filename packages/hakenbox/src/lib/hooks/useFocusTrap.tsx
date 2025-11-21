@@ -10,40 +10,69 @@ const FOCUSABLE_ELEMENTS = `
 `;
 
 /**
- * Custom React hook to create a focus trap within a specific DOM element.
- * * This hook traps the user's focus inside the provided element, preventing them
- * from tabbing to elements outside of it. It also handles closing the trap
- * with the 'Escape' key if an onEscape function is provided.
+ * Traps keyboard focus within a container element.
  *
- * @param {Function} [onEscape] - An optional callback function to be executed when the 'Escape' key is pressed.
- * @returns {React.RefObject<T>} A ref object to be attached to the container element that will act as the focus trap.
+ * Focusable elements are recalculated dynamically on each Tab press, so the trap
+ * stays accurate even if the DOM changes (elements are added, removed, or disabled).
+ *
+ * You can optionally:
+ * - Close the trap with Escape (`onEscape` callback)
+ * - Set an initial focus element (`initialFocus` selector)
+ *
+ * @param options Optional configuration
+ * @param options.onEscape Callback invoked when Escape key is pressed
+ * @param options.initialFocus CSS selector for the element to focus initially
+ *
+ * @returns Ref object to attach to the container element
+ *
+ * @example
+ * const ref = useFocusTrap({
+ *   onEscape: () => console.log('Escape pressed'),
+ *   initialFocus: '[data-autofocus]'
+ * });
+ *
+ * return (
+ *   <div ref={ref}>
+ *     <button>Cancel</button>
+ *     <button data-autofocus>Confirm</button>
+ *   </div>
+ * );
  */
-export function useFocusTrap<T extends HTMLElement>(
-  onEscape?: () => void
-): React.RefObject<T | null> {
+export function useFocusTrap<T extends HTMLElement>(options?: {
+  onEscape?: () => void;
+  initialFocus?: string;
+}): React.RefObject<T | null> {
   const ref = useRef<T | null>(null);
 
   useEffect(() => {
     if (!ref.current) return;
 
     const refElement = ref.current;
+    const getFocusableBounds = () => {
+      const elements =
+        refElement.querySelectorAll<HTMLElement>(FOCUSABLE_ELEMENTS);
+      return [elements[0], elements[elements.length - 1]];
+    };
 
-    const focusableElements =
-      refElement.querySelectorAll<HTMLElement>(FOCUSABLE_ELEMENTS);
-
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
+    let [firstElement, lastElement] = getFocusableBounds();
     if (!firstElement || !lastElement) return;
 
+    const focusElement = options?.initialFocus
+      ? refElement.querySelector<HTMLElement>(options.initialFocus)
+      : firstElement;
+    focusElement?.focus({ preventScroll: true });
+
     const handleTabKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && onEscape) {
+      if (e.key === 'Escape' && options?.onEscape) {
         e.preventDefault();
-        onEscape();
+        options?.onEscape();
         return;
       }
 
       if (e.key !== 'Tab') return;
+
+      [firstElement, lastElement] = getFocusableBounds();
+      if (!firstElement || !lastElement) return;
 
       if (e.shiftKey && document.activeElement === firstElement) {
         e.preventDefault();
@@ -56,7 +85,7 @@ export function useFocusTrap<T extends HTMLElement>(
 
     refElement.addEventListener('keydown', handleTabKeyPress);
     return () => refElement.removeEventListener('keydown', handleTabKeyPress);
-  }, [onEscape]);
+  }, [options]);
 
   return ref;
 }

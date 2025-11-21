@@ -21,7 +21,10 @@ function Component() {
 }
 
 function Modal({ handleClose }: { handleClose: () => void }) {
-  const modalRef = useFocusTrap<HTMLDivElement>(handleClose);
+  const modalRef = useFocusTrap<HTMLDivElement>({
+    onEscape: handleClose,
+    initialFocus: '[data-autofocus]',
+  });
 
   return (
     <div
@@ -70,7 +73,11 @@ function Modal({ handleClose }: { handleClose: () => void }) {
           </button>
         </div>
         <p style={{ marginTop: 0 }}>Hello 👋</p>
-        <button onClick={handleClose}>Close</button>
+        <button onClick={handleClose}>First</button>
+        <button onClick={handleClose}>Second</button>
+        <button onClick={() => console.log('THIRD')} data-autofocus>
+          Third
+        </button>
       </div>
     </div>
   );
