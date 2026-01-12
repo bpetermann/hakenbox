@@ -1,3 +1,4 @@
+export { useAutoFocus } from './lib/hooks/useAutoFocus';
 export { useClickAway } from './lib/hooks/useClickAway';
 export { useControlState } from './lib/hooks/useControlState';
 export { useDebounce } from './lib/hooks/useDebounce';
