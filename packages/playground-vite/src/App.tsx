@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import AutoFocusDemo from './components/AutoFocusDemo';
 import ClickAwayDemo from './components/ClickAwayDemo';
 import ControlDemo from './components/ControlDemo';
 import DebounceDemo from './components/DebounceDemo';
@@ -9,6 +10,10 @@ import ParamsDemo from './components/ParamsDemo';
 import StorageStateDemo from './components/StorageStateDemo';
 
 const options = {
+  AutoFocusDemo: {
+    hook: <AutoFocusDemo />,
+    description: 'Shows how to automatically focus an input element on mount.',
+  },
   StorageStateDemo: {
     hook: <StorageStateDemo />,
     description:
@@ -38,7 +43,6 @@ const options = {
     description:
       'Demonstrates trapping focus inside a modal or popover component.',
   },
-
   ClickAwayDemo: {
     hook: <ClickAwayDemo />,
     description: 'Demonstrates closing a panel by clicking outside of it',
@@ -46,6 +50,7 @@ const options = {
 };
 
 const optionLabels: Record<keyof typeof options, string> = {
+  AutoFocusDemo: 'Auto Focus',
   StorageStateDemo: 'Storage State',
   DerivedDemo: 'Derived State',
   ParamsDemo: 'Params',
