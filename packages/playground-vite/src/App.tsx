@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import AutoFocusDemo from './components/AutoFocusDemo';
+import ScrollToPositionDemo from './components/ScrollToPositionDemo';
 import ClickAwayDemo from './components/ClickAwayDemo';
 import ControlDemo from './components/ControlDemo';
 import DebounceDemo from './components/DebounceDemo';
@@ -13,6 +14,10 @@ const options = {
   AutoFocusDemo: {
     hook: <AutoFocusDemo />,
     description: 'Shows how to automatically focus an input element on mount.',
+  },
+  ScrollToPositionDemo: {
+    hook: <ScrollToPositionDemo />,
+    description: 'Demonstrates imperatively scrolling a container to a given position.',
   },
   StorageStateDemo: {
     hook: <StorageStateDemo />,
@@ -51,6 +56,7 @@ const options = {
 
 const optionLabels: Record<keyof typeof options, string> = {
   AutoFocusDemo: 'Auto Focus',
+  ScrollToPositionDemo: 'Scroll To Position',
   StorageStateDemo: 'Storage State',
   DerivedDemo: 'Derived State',
   ParamsDemo: 'Params',

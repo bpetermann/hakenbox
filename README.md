@@ -16,6 +16,7 @@ A lightweight collection of reusable React hooks.
 | `useControlState`      | Allows a value to be optionally controlled by the parent component         | [View][control-code]  | [View][control-demo]  |
 | `useFocusTrap`         | Create a focus trap within a specific DOM element                          | [View][focus-code]    | [View][focus-demo]    |
 | `useAutoFocus`         | Automatically focus an input element on mount                              | [View][auto-code]     | [View][auto-demo]     |
+| `useScrollToPosition`  | Imperatively scrolls a container element to a given position               | [View][scroll-code]   | [View][scroll-demo]   |
 
 [debounce-code]: https://github.com/bpetermann/hakenbox/blob/main/packages/hakenbox/src/lib/hooks/useDebounce.tsx
 [debounce-demo]: https://github.com/bpetermann/hakenbox/blob/main/packages/playground-vite/src/components/DebounceDemo.tsx
@@ -37,3 +38,5 @@ A lightweight collection of reusable React hooks.
 [away-demo]: https://github.com/bpetermann/hakenbox/blob/main/packages/playground-vite/src/components/ClickAwayDemo.tsx
 [auto-code]: https://github.com/bpetermann/hakenbox/blob/main/packages/hakenbox/src/lib/hooks/useAutoFocus.tsx
 [auto-demo]: https://github.com/bpetermann/hakenbox/blob/main/packages/playground-vite/src/components/useAutoFocus.tsx
+[scroll-code]: https://github.com/bpetermann/hakenbox/blob/main/packages/hakenbox/src/lib/hooks/useScrollToPosition.ts
+[scroll-demo]: https://github.com/bpetermann/hakenbox/blob/main/packages/playground-vite/src/components/ScrollToPositionDemo.tsx
